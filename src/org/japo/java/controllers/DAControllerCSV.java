@@ -47,13 +47,13 @@ public class DAControllerCSV implements IDAController {
             // Modelo > Items
             modelControl.asignarModeloItems(model, items);
 
-            // Escribe el primer item por separado
+            // Primer item por separado
             salida.print(items[0]);
 
             // Separador Items
             String separador = ", ";
 
-            // Escribe el resto de los items
+            // Resto de los items
             for (int i = 1; i < items.length; i++) {
                 salida.print(separador + items[i]);
             }
