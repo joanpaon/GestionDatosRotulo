@@ -16,7 +16,7 @@
 package org.japo.java.app;
 
 import java.awt.EventQueue;
-import org.japo.java.forms.View;
+import org.japo.java.view.View;
 
 /**
  *
@@ -28,20 +28,20 @@ public class App {
 
     // Entrada al Mecanismo Funcional
     public void launchApp() {
-        // Lanzar GUI
-        launchGUI();
+        // Lanzar View
+        launchView();
     }
 
     // Lanzar Interfaz Grafico de Usuario
-    private void launchGUI() {
+    private void launchView() {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
                 // Instancia la ventana
-                View gui = new View();
+                View view = new View();
 
                 // Muestra la ventana
-                gui.setVisible(true);
+                view.setVisible(true);
             }
         });
     }

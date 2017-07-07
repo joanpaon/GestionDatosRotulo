@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.japo.java.forms;
+package org.japo.java.view;
 
 import java.net.URL;
 import javax.swing.ImageIcon;
@@ -32,17 +32,17 @@ public class View extends javax.swing.JFrame {
 
     // Constructor
     public View() {
-        // Inicializar GUI - PREVIA
+        // Inicializar View - PREVIA
         beforeInit();
 
-        // Construcción - GUI
+        // Construcción - View
         initComponents();
 
-        // Inicializar GUI - POSTERIOR
+        // Inicializar View - POSTERIOR
         afterInit();
     }
 
-    // Inicializar GUI - PREVIA
+    // Inicializar View - PREVIA
     private void beforeInit() {
         // Generar Modelo
         model = new Model();
@@ -56,7 +56,7 @@ public class View extends javax.swing.JFrame {
         // Otras inicializaciones
     }
 
-    // Inicializar GUI - POSTERIOR
+    // Inicializar View - POSTERIOR
     private void afterInit() {
         // Icono Ventana - Recurso
         URL urlICN = ClassLoader.getSystemResource("img/favicon.png");
