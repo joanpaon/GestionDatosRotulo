@@ -35,6 +35,9 @@ import org.japo.java.interfaces.IDataAccessController;
  */
 public class Controller {
 
+    // Fichero Propiedades
+    public static final String FICHERO = "app.properties";
+
     // Referencias
     private final Model model;
     private final View view;
@@ -48,7 +51,7 @@ public class Controller {
         this.view = view;
 
         // Cargar Propiedades Aplicación
-        prpApp = UtilesApp.cargarPropiedades("app.properties");
+        prpApp = UtilesApp.cargarPropiedades("FICHERO");
 
         // *** Controlador de Persistencia ***
         this.dac = new DataAccessControllerCSV();
@@ -254,11 +257,11 @@ public class Controller {
         sincronizarModeloVista(model, view);
     }
 
-    // Gestión Cierre Ventana
+    // Gestión Cierre Vista
     public void procesarCierreVista(WindowEvent evt) {
         // Memorizar Estado de la Applicación
         memorizarEstadoVista(prpApp);
-        
+
         // Otras Acciones
     }
 
