@@ -25,84 +25,83 @@ import org.japo.java.libraries.UtilesCSV;
  */
 public class DataAccessControllerCSV implements IDataAccessController {
 
-    // Fichero [CSV] > Modelo
+    // Fichero CSV > Modelo
     @Override
     public void importarModelo(Model model, String fichero) throws Exception {
-        // Importar Items CSV
+        // Fichero CSV > Lista Items
         String[] items = UtilesCSV.importarItemsCSV(fichero);
 
-        // Lista de Items > Modelo
+        // Lista Items > Modelo
         convertirArrayModelo(items, model);        
     }
 
-    // Modelo > Fichero [CSV]
+    // Modelo > Fichero CSV
     @Override
     public void exportarModelo(Model model, String fichero) throws Exception {
-        // Items
+        // Lista Items
         String[] items = new String[Model.NUM_ITEMS];
 
-        // Modelo > Lista de Items
+        // Modelo > Lista Items
         convertirModeloArray(model, items);
 
-        // Exportar Items CSV
+        // Lista Items > Fichero CSV
         UtilesCSV.exportarItemsCSV(items, fichero);
     }
 
-    // Modelo > Array Items
-    public void convertirModeloArray(Model modelo, String[] items) {
-        // Modelo > Array Items
-        items[Model.POS_TEXTO] = modelo.getTexto();
-        items[Model.POS_FAMILIA] = modelo.getFamilia();
-        items[Model.POS_NEGRITA] = modelo.isNegrita() + "";
-        items[Model.POS_CURSIVA] = modelo.isCursiva() + "";
-        items[Model.POS_TALLA] = modelo.getTalla() + "";
-        items[Model.POS_FRENTE_R] = modelo.getFrenteR() + "";
-        items[Model.POS_FRENTE_V] = modelo.getFrenteV() + "";
-        items[Model.POS_FRENTE_A] = modelo.getFrenteA() + "";
-        items[Model.POS_FONDO_R] = modelo.getFondoR() + "";
-        items[Model.POS_FONDO_V] = modelo.getFondoV() + "";
-        items[Model.POS_FONDO_A] = modelo.getFondoA() + "";
+    // Modelo > Lista Items
+    public void convertirModeloArray(Model model, String[] items) {
+        items[Model.POS_TEXTO] = model.getTexto();
+        items[Model.POS_FAMILIA] = model.getFamilia();
+        items[Model.POS_NEGRITA] = model.isNegrita() + "";
+        items[Model.POS_CURSIVA] = model.isCursiva() + "";
+        items[Model.POS_TALLA] = model.getTalla() + "";
+        items[Model.POS_FRENTE_R] = model.getFrenteR() + "";
+        items[Model.POS_FRENTE_V] = model.getFrenteV() + "";
+        items[Model.POS_FRENTE_A] = model.getFrenteA() + "";
+        items[Model.POS_FONDO_R] = model.getFondoR() + "";
+        items[Model.POS_FONDO_V] = model.getFondoV() + "";
+        items[Model.POS_FONDO_A] = model.getFondoA() + "";
     }
 
-    // Array Items > Modelo
-    public void convertirArrayModelo(String[] items, Model modelo) {
+    // Lista Items > Modelo
+    public void convertirArrayModelo(String[] items, Model model) {
         // Texto
-        modelo.setTexto(items[Model.POS_TEXTO]);
+        model.setTexto(items[Model.POS_TEXTO]);
 
         // Familia
-        modelo.setFamilia(items[Model.POS_FAMILIA]);
+        model.setFamilia(items[Model.POS_FAMILIA]);
 
         // Estilo
-        modelo.setNegrita(items[Model.POS_NEGRITA].equals("true"));
-        modelo.setCursiva(items[Model.POS_CURSIVA].equals("true"));
+        model.setNegrita(items[Model.POS_NEGRITA].equals("true"));
+        model.setCursiva(items[Model.POS_CURSIVA].equals("true"));
 
         // Talla
         try {
-            modelo.setTalla(Integer.parseInt(items[Model.POS_TALLA]));
+            model.setTalla(Integer.parseInt(items[Model.POS_TALLA]));
         } catch (NumberFormatException e) {
-            modelo.setTalla(Model.DEF_TALLA);
+            model.setTalla(Model.DEF_TALLA);
         }
 
         // Frente
         try {
-            modelo.setFrenteR(Integer.parseInt(items[Model.POS_FRENTE_R]));
-            modelo.setFrenteV(Integer.parseInt(items[Model.POS_FRENTE_V]));
-            modelo.setFrenteA(Integer.parseInt(items[Model.POS_FRENTE_A]));
+            model.setFrenteR(Integer.parseInt(items[Model.POS_FRENTE_R]));
+            model.setFrenteV(Integer.parseInt(items[Model.POS_FRENTE_V]));
+            model.setFrenteA(Integer.parseInt(items[Model.POS_FRENTE_A]));
         } catch (NumberFormatException e) {
-            modelo.setFrenteR(Model.DEF_FRENTE_R);
-            modelo.setFrenteV(Model.DEF_FRENTE_V);
-            modelo.setFrenteA(Model.DEF_FRENTE_A);
+            model.setFrenteR(Model.DEF_FRENTE_R);
+            model.setFrenteV(Model.DEF_FRENTE_V);
+            model.setFrenteA(Model.DEF_FRENTE_A);
         }
 
         // Fondo
         try {
-            modelo.setFondoR(Integer.parseInt(items[Model.POS_FONDO_R]));
-            modelo.setFondoV(Integer.parseInt(items[Model.POS_FONDO_V]));
-            modelo.setFondoA(Integer.parseInt(items[Model.POS_FONDO_A]));
+            model.setFondoR(Integer.parseInt(items[Model.POS_FONDO_R]));
+            model.setFondoV(Integer.parseInt(items[Model.POS_FONDO_V]));
+            model.setFondoA(Integer.parseInt(items[Model.POS_FONDO_A]));
         } catch (NumberFormatException e) {
-            modelo.setFondoR(Model.DEF_FONDO_R);
-            modelo.setFondoV(Model.DEF_FONDO_V);
-            modelo.setFondoA(Model.DEF_FONDO_A);
+            model.setFondoR(Model.DEF_FONDO_R);
+            model.setFondoV(Model.DEF_FONDO_V);
+            model.setFondoA(Model.DEF_FONDO_A);
         }
     }
 }

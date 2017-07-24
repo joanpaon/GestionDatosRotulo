@@ -51,13 +51,13 @@ public class Controller {
         this.view = view;
 
         // Cargar Propiedades Aplicación
-        prpApp = UtilesApp.cargarPropiedades("FICHERO");
+        this.prpApp = UtilesApp.cargarPropiedades(FICHERO);
 
         // *** Controlador de Persistencia ***
         this.dac = new DataAccessControllerCSV();
     }
 
-    // Persistencia > Modelo > Interfaz
+    // Persistencia > Modelo > Vista
     public void procesarImportacion(ActionEvent evt) {
         try {
             // Fichero de Datos
@@ -66,28 +66,28 @@ public class Controller {
             // Persistencia > Modelo
             dac.importarModelo(model, fichero);
 
-            // Modelo > Interfaz
+            // Modelo > Vista
             sincronizarModeloVista(model, view);
 
-            // Validar Datos Cargados > Interfaz
+            // Validar Datos Importados > Vista
             validarControlesSubjetivos(view);
 
             // Mensaje - Importación OK
-            String msg = "Datos cargados correctamente";
+            String msg = "Datos importados correctamente";
             JOptionPane.showMessageDialog(view, msg);
         } catch (Exception e) {
             // Mensaje - Importación NO
-            String msg = "Error al cargar los datos";
+            String msg = "Error al importar los datos";
             JOptionPane.showMessageDialog(view, msg);
         }
     }
 
-    // Interfaz > Modelo > Persistencia
+    // Vista > Modelo > Persistencia
     public void procesarExportacion(ActionEvent evt) {
-        // Validar Datos Interfaz
+        // Validar Datos Vista
         if (validarControlesSubjetivos(view)) {
             try {
-                // Interfaz > Modelo
+                // Vista > Modelo
                 sincronizarVistaModelo(view, model);
 
                 // Fichero de Datos
@@ -97,11 +97,11 @@ public class Controller {
                 dac.exportarModelo(model, fichero);
 
                 // Mensaje - Exportación OK
-                String msg = "Datos guardados correctamente";
+                String msg = "Datos exportados correctamente";
                 JOptionPane.showMessageDialog(view, msg);
             } catch (Exception e) {
                 // Mensaje - Exportación NO
-                String msg = "Error al guardar los datos";
+                String msg = "Error al exportar los datos";
                 JOptionPane.showMessageDialog(view, msg);
             }
         } else {
@@ -126,18 +126,16 @@ public class Controller {
         int frenteR = model.getFrenteR();
         int frenteV = model.getFrenteV();
         int frenteA = model.getFrenteA();
-        Color frente = new Color(frenteR, frenteV, frenteA);
-        view.lblRotulo.setForeground(frente);
+        view.lblRotulo.setForeground(new Color(frenteR, frenteV, frenteA));
 
         // Fondo
         int fondoR = model.getFondoR();
         int fondoV = model.getFondoV();
         int fondoA = model.getFondoA();
-        Color fondo = new Color(fondoR, fondoV, fondoA);
-        view.lblRotulo.setBackground(fondo);
+        view.lblRotulo.setBackground(new Color(fondoR, fondoV, fondoA));
     }
 
-    // Interfaz (Subjetivo) > Modelo
+    // Vista (Subjetivo) > Modelo
     private void sincronizarVistaModelo(View view, Model model) {
 
     }
@@ -166,7 +164,7 @@ public class Controller {
         // Activa otras propiedades
     }
 
-    // Interfaz (Subjetivo) > Modelo
+    // Vista (Subjetivo) > Modelo
     public void sincronizarVistaModelo(Model model, View view) {
 //        // Campo de Texto - Item 
 //        if (UtilesValidacion.validarDato(

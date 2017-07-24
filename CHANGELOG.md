@@ -1,4 +1,10 @@
 <pre>
+
+Versión 0.1.6 - 24/07/2017
+==========================
+> Some refactorizations, optimizations and bugs fixed
+---
+
 Versión 0.1.5 - 17/07/2017
 ==========================
 > Some refactorizations
