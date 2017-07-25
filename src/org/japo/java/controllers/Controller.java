@@ -175,7 +175,7 @@ public class Controller {
 //        }
     }
 
-    // Procesar cambio de Texto
+    // Procesar Cambio de Texto
     public void procesarCambioTexto(DocumentEvent e) {
 //        // Campo de Texto > Modelo
 //        model.setTexto(view.txfTexto.getText());

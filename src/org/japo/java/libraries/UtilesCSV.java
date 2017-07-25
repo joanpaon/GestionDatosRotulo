@@ -30,9 +30,9 @@ public class UtilesCSV {
     public static final String SEPARADOR_LECTURA = "\\s*,\\s*";
     public static final String SEPARADOR_ESCRITURA = ", ";
 
-    // Archivo CSV > String[] items
+    // Archivo CSV > Lista Items
     public static String[] importarItemsCSV(String fichero) throws Exception {
-        // Array Items (Vacio)
+        // Lista Items (Vacio)
         String[] items;
 
         // Importar Items
@@ -40,15 +40,15 @@ public class UtilesCSV {
             // Fichero CSV > Linea Items
             String linea = entrada.readLine();
 
-            // Linea Items > Array Items
+            // Linea Items > Lista Items
             items = linea.split(SEPARADOR_LECTURA);
         }
 
-        // Devolver Lista Items
+        // Devolver Items
         return items;
     }
 
-    // String[] items > Archivo CSV
+    // Lista Items > Archivo CSV
     public static void exportarItemsCSV(String[] items, String fichero) throws Exception {
         // Lectura de un fichero de texto
         try (PrintWriter salida = new PrintWriter(new FileWriter(fichero))) {

@@ -55,17 +55,17 @@ public class UtilesApp {
     }
 
     // Propiedades > Fichero (Por defecto)
-    public static boolean guardarPropiedades(Properties p) {
-        return guardarPropiedades(p, FICHERO_PRP_APP);
+    public static boolean guardarPropiedades(Properties prp) {
+        return guardarPropiedades(prp, FICHERO_PRP_APP);
     }
 
     // Propiedades > Fichero
-    public static boolean guardarPropiedades(Properties prp, String rutaFichero) {
+    public static boolean guardarPropiedades(Properties prp, String fichero) {
         // Semáforo Estado
         boolean procesoOK = false;
 
         // Proceso de salvaguarda de propiedades
-        try (FileWriter fw = new FileWriter(rutaFichero)) {
+        try (FileWriter fw = new FileWriter(fichero)) {
             // Guarda las propiedades
             prp.store(fw, null);
 
@@ -107,13 +107,13 @@ public class UtilesApp {
     }
 
     // Activa Instancia Única
-    public static boolean activarInstancia(String numPuerto) {
+    public static boolean activarInstancia(String txtPuerto) {
         // Semaforo Estado
         boolean instanciaOK = false;
 
         try {
             // Conversión numérica
-            int puerto = Integer.parseInt(numPuerto);
+            int puerto = Integer.parseInt(txtPuerto);
 
             // Abre un ServerSocket al puerto de bloqueo
             ServerSocket ss = new ServerSocket(puerto);
@@ -122,7 +122,7 @@ public class UtilesApp {
             instanciaOK = true;
         } catch (IOException | NumberFormatException e) {
             // Mensaje Informativo
-            System.out.println(e.getLocalizedMessage());
+            System.out.println(e);
         }
 
         // Devuelve Estado
